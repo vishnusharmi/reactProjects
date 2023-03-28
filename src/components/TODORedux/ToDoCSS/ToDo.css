@@ -1,0 +1,28 @@
+.ulstyle{
+    list-style-type: none;
+}
+
+.todo{
+    margin-right: 50px;
+}
+.delete{
+    background-color: red;
+    color: white;
+    border-radius: 40px;
+  
+
+}
+
+.inputs{
+    border-radius: 30px;
+}
+
+.add{
+    border-radius: 30px;
+    background-color: green;
+    color: aliceblue;
+}
+.head{
+    text-align: center;
+}
+   
