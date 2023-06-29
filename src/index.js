@@ -13,8 +13,8 @@ import store from "./components/TODORedux/ToDoStore/ToDoStore";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    {/* <Provider store={store}> */}
+    <App />
+    {/* </Provider> */}
   </BrowserRouter>
 );

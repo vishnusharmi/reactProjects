@@ -1,0 +1,56 @@
+.border{
+    border: 2px;
+    border-radius: 8px;
+    list-style-type: none;
+    text-align: justify;
+    margin-top: 10px;
+    width: 600px;
+    background-color:darkslategray;
+    color:bisque;
+}
+.edit{
+   margin-left: 35px;
+    border-style: none;
+    color:mediumseagreen;
+    background: none;
+}
+.delbtns{
+    border-style: none;
+    /* margin-left: 20px; */
+    color:red;
+    background: none;
+}
+.addtodo{
+    margin-left: 10px;
+    border-radius: 50px;
+    border-color: rgb(249, 233, 8);
+    background-color: forestgreen;
+    color: azure;
+}
+.enter{
+    border-radius: 10px;
+    border-color: blue;
+}
+.update{
+    border-radius: 50px;
+    border-color: brown;
+    background-color:violet;
+    color:black;
+    margin-left: 10px;
+}
+.canceled{
+    border-radius: 50px;
+        border-color: rgb(6, 108, 241);
+        background-color: rgb(238, 23, 8);
+        color: black;
+        margin-left: 5px;
+}
+.head{
+    color: hotpink;
+    font-style: italic;
+    font-family: fantasy;
+}
+.bod{
+    background-color: gray;
+}
+

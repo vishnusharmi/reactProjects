@@ -27,6 +27,8 @@ import Calculater from "./components/calculater/Calculater";
 import ToDoRedux from "./components/toDoList/ToDoRedux";
 import Weather from "./components/Projects/weatherAppReact/Weather";
 import TodoReact from "./components/Projects/todoList/TodoReact";
+import AssignmentTodo from "./assignment/AssignmentTodo";
+import Practice from "./practice/Practice";
 
 export const UserContext = React.createContext();
 
@@ -71,8 +73,10 @@ const App = () => {
 
       {/* <ReduxCounter /> */}
       {/* <Calculater /> */}
-      <Weather />
+      {/* <Weather /> */}
       {/* <TodoReact /> */}
+      <AssignmentTodo />
+      {/* <Practice /> */}
 
       {/* <ToDoRedux /> */}
     </div>
