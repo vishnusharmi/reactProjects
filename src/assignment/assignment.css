@@ -7,9 +7,11 @@
     width: 600px;
     background-color:darkslategray;
     color:bisque;
+    padding-left: 10px;
+    height: 30px;
 }
 .edit{
-   margin-left: 35px;
+   /* margin-left: 35px; */
     border-style: none;
     color:mediumseagreen;
     background: none;
@@ -52,5 +54,28 @@
 }
 .bod{
     background-color: gray;
+   
 }
 
+.completed{
+    text-decoration: line-through;
+    background-color:chocolate;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 6px;
+}
+.cbox{
+    margin-right: 8px;
+}
+.editDelet{
+   
+    
+}
+i.fa-trash{
+    text-align: end;
+}
+.show{
+    padding-left: 10px;
+    color: darkblue;
+    font-weight: bold;
+}

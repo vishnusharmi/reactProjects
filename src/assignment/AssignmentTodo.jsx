@@ -8,6 +8,7 @@ function AssignmentTodo() {
 const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [editingTodo, setEditingTodo] = useState(null);
+   const [showCompleted, setShowCompleted] = useState(false);
 
   useEffect(() => {
     fetchTodos();
@@ -27,6 +28,10 @@ const [todos, setTodos] = useState([]);
 
   const handleAddTodo = async (event) => {
     event.preventDefault();
+     if (newTodo.trim() === "") {
+      alert("Todo cannot be allow empty");
+      return;
+    }
     try {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/users/1/todos",
@@ -60,7 +65,10 @@ const [todos, setTodos] = useState([]);
   };
 
   const handleDeleteTodo = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+   const confirmDelete = window.confirm('Are you sure you want to delete this todo ?');
+    if (confirmDelete) {
+      setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    }
   };
 
   const handleStartEditing = (id) => {
@@ -81,8 +89,17 @@ const [todos, setTodos] = useState([]);
     }
   };
 
+  const handleToggleCompleted = () => {
+    setShowCompleted((prevShowCompleted) => !prevShowCompleted);
+  };
+
+  const filteredTodos = showCompleted
+    ? todos.filter((todo) => todo.completed)
+    : todos;
+
   return (
     <div class='bod'>
+    <div>
       <center>
       <h1 class='head'>Todo App</h1>
       <div>
@@ -106,27 +123,42 @@ const [todos, setTodos] = useState([]);
             <button type="submit" class='addtodo'>Add Todo</button>
           </form>
         )}
+        </div>
+        
+          <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={showCompleted}
+            onChange={handleToggleCompleted}
+          />
+           <span className='show'>Show Completed Tasks</span> 
+        </label>
       </div>
+
       <ul class='unOderlist'>
-          {todos.map((todo, index) => (
+          {filteredTodos.map((todo, index) => (
           
-          <li key={todo.id} class='border'> (ID: {todo.id})
+          <li key={todo.id} class='border'>
             <input
-              type="checkbox"
+              type="checkbox" className='cbox'
               checked={todo.completed}
               onChange={(e) =>
                 handleEditTodo(todo.id, { completed: e.target.checked })
               }
             />
-            {todo.title} 
-            <button onClick={() => handleStartEditing(todo.id)} class='edit' ><i class='far fa-edit' > </i></button>
-            <button onClick={() => handleDeleteTodo(todo.id)}class='delbtns'><i class='fas fa-trash'></i></button>
+              {/* {todo.title}  */}
+              <span className={todo.completed ? "completed" : ""}>{todo.title}</span>
+
+          <span class='editDelet'>  <button onClick={() => handleStartEditing(todo.id)} class='edit' ><i class='far fa-edit' > </i></button>
+            <button onClick={() => handleDeleteTodo(todo.id)}class='delbtns'><i class='fas fa-trash'></i></button></span>
               </li>
         
         ))}
         </ul>
         </center>
-    </div>
+      </div>
+      </div>
   );
 }
 
