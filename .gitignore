@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/components/banner/Banner.jsx
+src/components/cards/Cards.jsx
+src/components/cards/Cards.jsx

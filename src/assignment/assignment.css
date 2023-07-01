@@ -4,11 +4,13 @@
     list-style-type: none;
     text-align: justify;
     margin-top: 10px;
-    width: 600px;
+    width: 700px;
     background-color:darkslategray;
     color:bisque;
     padding-left: 10px;
     height: 30px;
+    box-shadow: 5px 5px 5px dodgerblue inset;
+    
 }
 .edit{
    /* margin-left: 35px; */
@@ -20,6 +22,7 @@
     border-style: none;
     /* margin-left: 20px; */
     color:red;
+    /* color: dodgerblue; */
     background: none;
 }
 .addtodo{
@@ -31,7 +34,8 @@
 }
 .enter{
     border-radius: 10px;
-    border-color: blue;
+    border-color: red;
+    width: 400px;
 }
 .update{
     border-radius: 50px;
@@ -51,8 +55,10 @@
     color: hotpink;
     font-style: italic;
     font-family: fantasy;
+    background-color: yellow;
 }
 .bod{
+    /* background-color:midnightblue; */
     background-color: gray;
    
 }
@@ -67,8 +73,8 @@
 .cbox{
     margin-right: 8px;
 }
-.editDelet{
-   
+.btnAlign{
+   text-align: right;
     
 }
 i.fa-trash{
@@ -79,3 +85,70 @@ i.fa-trash{
     color: darkblue;
     font-weight: bold;
 }
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #411414;
+    padding: 90px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
+}
+
+/* Modal overlay styles */
+.modal-overlay {
+    position: fixed;
+    top: 60;
+    left: 60;
+    right: 60;
+    bottom: 60;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.popup {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 100px;
+    
+}
+
+.popup-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 30%;
+    
+    font-weight: bolder;
+}
+
+.popup-content button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* .show {
+    display: block;
+} */
+
+h6 {
+    color: green;
+} 
+.popbtn{
+    border-radius: 10px;
+    background-color: darkblue;
+    color: white;
+} 
