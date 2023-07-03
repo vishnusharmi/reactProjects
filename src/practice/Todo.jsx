@@ -1,11 +1,9 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './assignment.css';
+// import './assignment.css';
 
-function AssignmentTodo() {
-
+function Todo() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [editingTodo, setEditingTodo] = useState(null);
@@ -15,13 +13,20 @@ function AssignmentTodo() {
     fetchTodos();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   const fetchTodos = async () => {
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users/1/todos"
-      );
-      const data = await response.json();
-      setTodos(data);
+      const storedTodos = localStorage.getItem('todos');
+      if (storedTodos) {
+        setTodos(JSON.parse(storedTodos));
+      } else {
+        const response = await fetch("https://jsonplaceholder.typicode.com/users/1/todos");
+        const data = await response.json();
+        setTodos(data);
+      }
     } catch (error) {
       console.log("Error fetching todos:", error);
     }
@@ -30,11 +35,10 @@ function AssignmentTodo() {
   const handleAddTodo = async (event) => {
     event.preventDefault();
     if (newTodo.trim() === "") {
-    
-      return   toast.error('Todo cannot be empty', {
+      toast.error('Todo cannot be empty', {
         position: toast.POSITION.BOTTOM_CENTER
       });
-
+      return;
     }
 
     const isDuplicate = todos.some(
@@ -47,8 +51,7 @@ function AssignmentTodo() {
     }
 
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users/1/todos",
+      const response = await fetch("https://jsonplaceholder.typicode.com/users/1/todos",
         {
           method: "POST",
           headers: {
@@ -77,12 +80,11 @@ function AssignmentTodo() {
       )
     );
     setEditingTodo(null);
-  };
+  }; 
 
   const handleDeleteTodo = (id, title) => {
-    
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
-     toast.info(`Deleted Successfully`);
+    toast.info(`Deleted Successfully`);
   };
 
   const handleStartEditing = (id) => {
@@ -110,9 +112,7 @@ function AssignmentTodo() {
     setShowCompleted((prevShowCompleted) => !prevShowCompleted);
   };
 
-  const filteredTodos = showCompleted
-    ? todos.filter((todo) => todo.completed)
-    : todos;
+  const filteredTodos = showCompleted ? todos.filter((todo) => todo.completed) : todos;
 
   return (
     <div className="bod">
@@ -152,8 +152,7 @@ function AssignmentTodo() {
 
           <div>
             <label>
-              <input
-                type="checkbox"
+              <input type="checkbox"
                 checked={showCompleted}
                 onChange={handleToggleCompleted}
               />
@@ -201,4 +200,4 @@ function AssignmentTodo() {
   );
 }
 
-export default AssignmentTodo;
+export default Todo;
